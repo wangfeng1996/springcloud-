@@ -1,0 +1,30 @@
+server:
+  port: 80
+
+spring:
+  application:
+    name: ZH-GETAWAY-SERVER
+
+  cloud:
+    # 网关配置
+    gateway:
+      # 路由配置：转发规则
+      routes: #集合。
+        # id: 唯一标识。默认是一个UUID
+        # uri: 转发路径
+        # predicates: 条件,用于请求网关路径的匹配规则
+        - id: ZH-EUREKA-ORDER
+          uri: lb://ZH-EUREKA-ORDER
+          predicates:
+            - Path=/order/**
+
+        - id: ZH-EUREKA-GOOD
+          uri: lb://ZH-EUREKA-GOODS
+          predicates:
+            - Path=/goods/**
+      discovery:
+        locator:
+          enabled: true  #将请求路径前可以添加微服务的名称
+          lower-case-service-id: true # 微服务名称可以用小写表示
+
+

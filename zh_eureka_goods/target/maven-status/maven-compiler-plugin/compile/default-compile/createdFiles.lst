@@ -1,0 +1,4 @@
+com/wang/goods/feign/FeignGoodsClientFallback.class
+com/wang/goods/feign/FeignGoodsClient.class
+com/wang/goods/controller/GoodsController.class
+com/wang/goods/GoodsApplication.class
